@@ -1,0 +1,8 @@
+#!/bin/dash
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+echo "----------------------------------------"
+echo "WELCOME TO DASH SHELL"
+echo "----------------------------------------"
+# Запускаем интерактивный шелл на консоли
+exec /bin/dash
