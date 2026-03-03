@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # PREPARE
-# apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev bc
-# apt install linux-source
+#apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev bc
+#apt install linux-source
+#exit 0
 #cd /usr/src
 #tar xvf linux-source-6.12.tar.xz
 
