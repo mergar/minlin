@@ -58,3 +58,6 @@ scripts/config --disable DRM
 #One final check: Before you run kexec, make sure your new kernel actually has the VirtIO block driver built-in, or it won't see /dev/vda1 at all:
 #grep CONFIG_VIRTIO_BLK .config
 ## It MUST be =y (not =m)
+
+make -j$(nproc) bzImage
+
