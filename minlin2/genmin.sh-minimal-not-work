@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# PREPARE
+#apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev bc
+#apt install linux-source
+#exit 0
+#cd /usr/src
+#tar xvf linux-source-6.12.tar.xz
+
+cd /usr/src/linux-source-6.12
+
+# Копируем текущий конфиг Debian как базу
+#cp /boot/config-$(uname -r) .config
+
+make allnoconfig
+
+
+scripts/config --enable CONFIG_64BIT
+scripts/config --enable CC_OPTIMIZE_FOR_SIZE
+
+for i in CONFIG_VIRTIO_PCI CONFIG_VIRTIO_NET CONFIG_NET CONFIG_INET CONFIG_UNIX CONFIG_NET_9P CONFIG_NET_9P_VIRTIO CONFIG_9P_FS CONFIG_9P_FS_POSIX_ACL CONFIG_SERIAL_8250 CONFIG_SERIAL_8250_CONSOLE CONFIG_VIRTIO_CONSOLE; do
+scripts/config --enable ${i}
+done
+
+
+for i in CONFIG_RELOCATABLE CONFIG_EFI CONFIG_EFI_STUB CONFIG_TTY CONFIG_SERIAL_8250 CONFIG_SERIAL_8250_CONSOLE CONFIG_64BIT CONFIG_X86_64 CONFIG_PCI CONFIG_HAS_IOMEM; do
+scripts/config --enable ${i}
+done
+
+scripts/config --enable KERNEL_LZ4
+#make olddefconfig
+#make olddefconfig
+yes "" | make -j$(nproc) bzImage
+
+du -sh arch/x86/boot/bzImage

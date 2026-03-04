@@ -1,0 +1,7 @@
+#!/bin/sh
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+echo "----------------------------"
+echo "HELLO FROM CUSTOM KERNEL!"
+echo "----------------------------"
+exec /bin/sh # Оставим консоль, чтобы система не ушла в Kernel Panic

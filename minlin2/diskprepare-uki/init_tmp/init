@@ -1,0 +1,18 @@
+#!/bin/busybox sh
+# Устанавливаем пути к командам через busybox
+/bin/busybox --install -s /bin
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+
+# Настройка сети (статический IP)
+ip link set eth0 up
+ip addr add 172.16.0.50/24 dev eth0
+ip route add default via 172.16.0.1
+
+# Монтирование 9P (если расшарено с хоста)
+# mkdir /mnt/shared
+# mount -t 9p -o trans=virtio,version=9p2000.L hostshare /mnt/shared
+
+echo "NETWORK CONFIGURED: eth0 = 172.16.0.50"
+exec /bin/sh

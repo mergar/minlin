@@ -13,6 +13,6 @@ apt-get install -y systemd-ukify
 /usr/lib/systemd/ukify build \
     --linux=/usr/src/linux-source-6.12/arch/x86/boot/bzImage \
     --initrd=initrd.img \
-    --cmdline="console=ttyS0 console=tty0 quiet" \
+    --cmdline="console=ttyS0 console=tty0 net.ifnames=0 quiet" \
     --output=BOOTX64.EFI
 

@@ -11,3 +11,5 @@ chmod +x /mnt/target/EFI/BOOT/BOOTX64.EFI
 
 # Копируем initramfs рядом
 #cp initrd.img /mnt/target/EFI/initrd.img
+
+umount /mnt/target

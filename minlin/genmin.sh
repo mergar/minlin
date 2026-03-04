@@ -40,6 +40,11 @@ scripts/config --enable CC_OPTIMIZE_FOR_SIZE
 # Ensure LZ4 compression for fast boot
 scripts/config --enable KERNEL_LZ4
 
+
+for i in CONFIG_9P_FS CONFIG_NET_9P CONFIG_NET_9P_VIRTIO 9P_FS_POSIX_ACL 9P_FSCACHE CONFIG_NET_9P_FD CONFIG_9P_FS_SECURITY CONFIG_9P_FS_POSIX_ACL; do
+	scripts/config --enable ${i}
+done
+
 # Disable RAID6 benchmarking
 scripts/config --disable RAID6_PQ_BENCHMARK
 
@@ -61,3 +66,4 @@ scripts/config --disable DRM
 
 make -j$(nproc) bzImage
 
+du -sh arch/x86/boot/bzImage
