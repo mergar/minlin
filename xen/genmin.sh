@@ -52,6 +52,9 @@ scripts/config --disable DRM
 # XEN
 scripts/config --enable CONFIG_XEN_PVH
 scripts/config --enable CONFIG_XEN_PVHVM
+scripts/config --enable CONFIG_XEN
+scripts/config --enable CONFIG_XEN_PVHVM
+scripts/config --enable CONFIG_XEN_PVH
 
 
 #3. One More "Speed Hack": Disable Predictable Network Interface Names
