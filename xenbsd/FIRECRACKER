@@ -1,0 +1,47 @@
+cpu		HAMMER
+ident		XEN
+
+#makeoptions	MODULES_OVERRIDE="virtio"
+
+#options 	SCHED_ULE		# ULE scheduler
+options		SCHED_4BSD
+
+device		pci
+device		loop			# Network loopback
+device		ether			# Ethernet support
+
+device		acpi
+#device		uart			# Generic UART driver
+#device		atpic			# 8259A compatability
+#options		GEOM_PART_GPT		# GUID Partition Tables.
+options 	FFS			# Berkeley Fast Filesystem
+#options		GEOM_LABEL		# Provides labelization
+#device		virtio			# Generic VirtIO bus (required)
+#device		virtio_pci		# VirtIO PCI device
+#device		virtio_blk		# VirtIO Block device
+#device		vtnet			# VirtIO Ethernet device
+
+options	SMP			# Symmetric MultiProcessor Kernel
+#options	INET			# InterNETworking
+
+#device		vt
+#device		vt_efifb
+
+#options		TMPFS	# Efficient memory filesystem
+
+#device		atkbdc			# AT keyboard controller
+#device		atkbd			# AT keyboard
+
+options 	XENHVM			# Xen HVM kernel infrastructure
+#device		xenpci			# Xen HVM Hypervisor services driver
+device		xentimer		# Xen x86 PV timer device
+
+#options     MD_ROOT              # Включает использование md(4) как корня
+#options     MD_ROOT_SIZE=5120    # Размер образа в КБ (например, 5 МБ)
+#options     MD_ROOT_SIZE=20529
+
+device      md                   # Драйвер memory disk
+
+#options         MD_ROOT
+#device          md
+#makeoptions     MFS_IMAGE=/root/minlin/xenbsd/makemfs/mfsroot.img
